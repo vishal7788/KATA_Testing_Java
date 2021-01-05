@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.*;
 
+import static utils.DriversUtils.getDriver;
+
 
 public class HomePage {
 
@@ -17,19 +19,12 @@ public class HomePage {
     private WebElement bookButton;
 
     public HomePage() {
-        //this.webDriver = webDriver;
-        System.out.println("hereh");
-        //PageFactory.initElements(webDriver, this);
-        System.out.println(DriversUtils.getDriver());
-        PageFactory.initElements(DriversUtils.getDriver(), this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     public void goToRoomsCategory() {
         try {
-            JavascriptExecutor js = (JavascriptExecutor) DriversUtils.getDriver();
-            //WebElement roomCategoryIdentifier = webDriver.findElement(By.xpath("//h2"));
-            System.out.println(roomCategoryIdentifier);
-            js.executeScript("arguments[0].scrollIntoView();", roomCategoryIdentifier);
+            scrollToElement(CommonUtils.roomCategoryIdentifier);
         } catch (RuntimeException e) {
             e.printStackTrace();
             System.out.println("Error in the rooms category method");
@@ -41,7 +36,7 @@ public class HomePage {
     }
 
     public void navigateToHomePage() {
-        DriversUtils.getDriver().get("https://automationintesting.online/#/");
+        getDriver().get("https://automationintesting.online/#/");
     }
 }
 
