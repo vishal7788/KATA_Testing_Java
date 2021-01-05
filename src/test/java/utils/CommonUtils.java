@@ -13,7 +13,7 @@ public class CommonUtils {
         js.executeScript("window.scrollBy(0,250)");
     }
 
-    public void scrollToElement(WebElement element){
+    public static void scrollToElement(WebElement element){
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
     }

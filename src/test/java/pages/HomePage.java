@@ -7,7 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.*;
 
-import static utils.DriversUtils.getDriver;
+import static utils.CommonUtils.*;
+import static utils.DriversUtils.*;
 
 
 public class HomePage {
@@ -24,7 +25,7 @@ public class HomePage {
 
     public void goToRoomsCategory() {
         try {
-            scrollToElement(CommonUtils.roomCategoryIdentifier);
+            scrollToElement(roomCategoryIdentifier);
         } catch (RuntimeException e) {
             e.printStackTrace();
             System.out.println("Error in the rooms category method");
