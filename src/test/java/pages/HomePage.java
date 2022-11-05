@@ -24,7 +24,7 @@ public class HomePage {
     @FindBy(xpath = "//h2[contains(text(),'Rooms')]")
     private WebElement roomCategoryIdentifier;
 
-    @FindBy(xpath = "//h3[contains(text(),'single')]/ancestor::div[@class=\"row hotel-room-info\"]//button[contains(@class,'openBooking')]")
+    @FindBy(xpath = "//h3[contains(text(),'single')]/ancestor::div[@class='row hotel-room-info']//button[contains(@class,'openBooking')]")
     private WebElement singleRoomBookButton;
 
     @FindBy(name = "firstname")
