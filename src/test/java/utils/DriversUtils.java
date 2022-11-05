@@ -1,23 +1,32 @@
 package utils;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class DriversUtils {
     static WebDriver driver;
 
     public static void initDriver() {
+        //Chrome => The chrome browser on my system is not updated so could not use chrome driver
         //System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
         //driver = new ChromeDriver();
-        driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Firefox => The latest version of gecko driver throwing an error
+        /*System.setProperty("webdriver.gecko.driver", "C:\\SeleniumDrivers\\FireFox\\geckodriver.exe");
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setCapability("marionette",true);
+        driver = new FirefoxDriver();*/
+        System.setProperty("webdriver.edge.driver", "C:\\SeleniumDrivers\\Edge\\msedgedriver.exe");
+        driver = new EdgeDriver();
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
     }
 
     public static WebDriver getDriver() {
-
         if (driver == null ) {
             initDriver();
         }
